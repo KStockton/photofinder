@@ -4,15 +4,45 @@
     <title>Foto Finder</title>
     <link rel="stylesheet" href="normalize.css">
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
     <header>
-      <h1>Foto<img src="images/foto-finder-logo.svg">Finder</h1>
-      <input type="search" name="search-field" placeholder="search"><img src="images/search-solid.svg">
-    </header>
-    <main>
-      
-    </main>
+      <section class="title_main">
+        <h1>Foto
+          <img src="images/foto-finder-logo.svg" class="camera"> Finder
+        </h1>
+      <aside>
+      <input class="search_icon" type="text" name="search" placeholder="Search">
+      <i class="fas fa-search"></i>
+      </aside>
+      </section>
+      </header>
+      <main>
+        <form>
+          <label>Title <input type="text" name="field1" class="input_title" /></label>
+          <label>Caption <input type="text" name="field1" class="input_caption"/></label>
+          <input type="file" name="file" id="file" class="input" />
+          <label for="file">Choose a file</label>
+          <section>
+            <button class="css_view view_btn">View 1 Favorites</button>
+            <button class="css_view add_btn">Add to Album</button>
+          </section>
+        </form>
+      </main>
+      <section class="add_card">
+        <article>
+          <h4>Waterfall Images</h4>
+          <img class="images">
+          <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h4>
+          <footer>
+            <img src="images/delete.svg" class="pic_icon">
+            <img src="images/favorite.svg" class="pic_icon">
+        </footer>
+      </article>
+    </section>
+    <script type="text/javascript" src="photo.js"></script>
+    <script type="text/javascript" src="main.js"></script>
   </body>
 </html>
