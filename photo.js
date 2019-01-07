@@ -1,10 +1,10 @@
 class Photo {
-  constructor() {
-    this.id = id;
+  constructor(id, title, caption, file, favorite) {
+    this.id = id || Date.now();
     this.title = title;
     this.caption = caption;
     this.file = file;
-    this.favorite = favorite;
+    this.favorite = false;
     
 
   }
@@ -13,6 +13,7 @@ class Photo {
     localStorage.setItem('cards', JSON.stringify(imagesArr));
   }
   deleteFromStorage() {
+    localStorage.setItem('cards', JSON.stringify(imagesArr));
 
   }
   updatePhoto() {
