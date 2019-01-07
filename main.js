@@ -30,6 +30,7 @@ var reader = new FileReader();
 // ------------ Event Listners --------------
 window.addEventListener('load', appendPhotos);
 addCard.addEventListener('click', createElement);
+console.log(addCard)
   // trash.addEventListener('focusin', eraser);
 
 // -------------- Functions --------------------
