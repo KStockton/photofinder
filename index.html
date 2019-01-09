@@ -3,19 +3,17 @@
   <head>
     <title>Foto Finder</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="normalize.css">
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
   </head>
   <body>
     <header>
       <section class="title_main">
-        <div>
         <h1>Foto
           <img src="images/foto-finder-logo.svg" class="camera"> Finder
         </h1>
-      </div>
       <aside>
       <input class="search_icon" type="text" name="search" placeholder="Search">
       <i class="fas fa-search"></i>
@@ -23,8 +21,8 @@
       </section>
       </header>
         <form>
-          <label><span class="ui_text">Title</span><input type="text" name="field1" id="input_title" /></label>
-          <label><span class="ui_text">Caption</span><input type="text" name="field1" id="input_caption"/></label>
+          <label><span class="ui_text">Title</span><input type="text" name="field1" maxlength="20" class="input_style" id="input_title" placeholder="Enter Title" /></label>
+          <label><span class="ui_text">Caption</span><input type="text" name="field1" maxlength="100" class="input_style" id="input_caption" placeholder="Enter Caption"/></label>
           <input type="file" name="file" id="file" class="input" />
           <label for="file"><span class="ui_text" id="upload_text">Choose a file</span></label>
           <section>
@@ -32,9 +30,11 @@
             <button class="css_view" id="add_btn">Add to Album</button>
           </section>
         </form>
-      <main class="add_card">
-              
-      </main>
+      <main>
+        <section class="add_card">
+        <!-- ------ Photo Card Here -->
+        </section>
+      </main> 
       <script type="text/javascript" src="photo.js"></script>
       <script type="text/javascript" src="main.js"></script>
   </body>

@@ -1,8 +1,9 @@
 * {
-     font-family: 'Open Sans', sans-serif;
      box-sizing: border-box;
+     font-family: 'Open Sans', sans-serif;
      margin: 0px;
      padding: 0px;
+
 }
  header {
      background-color: #3B2B34;
@@ -27,14 +28,13 @@
      font-size: 31px;
 }
  .search_icon {
-     width: 267px;
      border-top-left-radius: 8px;
      border-bottom-left-radius: 8px;
      border-style: solid;
      border-color: #ACAAB5;
-     font-size: 25px;
+     font-size: 20px;
      color: #ACAAB5;
-     padding-left: 13px 
+     padding-left: 11px 
 }
  .fa-search {
      background-color: #ACAAB5;
@@ -60,18 +60,15 @@
   font-size: 16px;
   font-weight: 400;
 }
- #input_title {
-     width: 28rem;
+ .input_style {
+     border: none;
+     font-size: 18px;
      height: 2.5rem;
      margin-top: .5rem;
-     border: none;
-}
- #input_caption {
-     height: 2.5rem;
+     padding-left: 10px;
      width: 28rem;
-     margin-top: .5rem;
-     border: none;
 }
+
  .input {
      width: 0.1px;
      height: 0.1px;
@@ -96,7 +93,7 @@
 }
  #upload_text {
      position: relative;
-     top: 7px;
+     top: 10px;
 }
  button {
      background-color: #5B4447;
@@ -110,7 +107,13 @@
      margin: 2.7rem 1.9rem;
 }
 /*------------card-------------*/
- main {
+  main{
+    background-color: #BAA9AB;
+    height: 100%;
+
+  }
+
+ .add_card {
      display: grid;
      grid-template-columns: repeat(auto-fit, 263px);
      grid-gap: 40px;
