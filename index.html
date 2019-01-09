@@ -1,41 +1,36 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Foto Finder</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="normalize.css">
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-  </head>
-  <body>
-    <header>
-      <section class="title_main">
-        <h1>Foto
-          <img src="images/foto-finder-logo.svg" class="camera"> Finder
-        </h1>
+<head>
+  <title>Foto Finder</title>
+  <meta charset="utf-8">
+  <link href="normalize.css" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet" type="text/css">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:600,800" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <section class="title_main">
+      <h1>Foto <img class="camera" src="images/foto-finder-logo.svg"> Finder</h1>
       <aside>
-      <input class="search_icon" type="text" name="search" placeholder="Search">
-      <i class="fas fa-search"></i>
+        <input class="search_icon" name="search" placeholder="Search" type="text"> <i class="fas fa-search"></i>
       </aside>
-      </section>
-      </header>
-        <form>
-          <label><span class="ui_text">Title</span><input type="text" name="field1" maxlength="20" class="input_style" id="input_title" placeholder="Enter Title" /></label>
-          <label><span class="ui_text">Caption</span><input type="text" name="field1" maxlength="100" class="input_style" id="input_caption" placeholder="Enter Caption"/></label>
-          <input type="file" name="file" id="file" class="input" />
-          <label for="file"><span class="ui_text" id="upload_text">Choose a file</span></label>
-          <section>
-            <button class="css_view view_btn">View 1 Favorites</button>
-            <button class="css_view" id="add_btn">Add to Album</button>
-          </section>
-        </form>
-      <main>
-        <section class="add_card">
-        <!-- ------ Photo Card Here -->
-        </section>
-      </main> 
-      <script type="text/javascript" src="photo.js"></script>
-      <script type="text/javascript" src="main.js"></script>
-  </body>
+    </section>
+  </header>
+  <form>
+    <label><span class="ui_text">Title</span><input class="input_style" id="input_title" maxlength="20" name="field1" placeholder="Enter Title" type="text"></label> <label><span class="ui_text">Caption</span><input class="input_style" id="input_caption" maxlength="50" name="field1" placeholder="Enter Caption" type="text"></label> <input class="input" id="file" name="file" type="file"> <label for="file"><span class="ui_text" id="upload_text">Choose a file</span></label>
+    <section class="bottom_btns">
+      <button class="css_view view_btn">View 1 Favorites</button> 
+      <button class="css_view" id="add_btn">Add to Album</button>
+    </section>
+  </form>
+  <main class="add_card">
+  <!-- ====== Photo Card Here -->
+  </main>
+  <script src="photo.js" type="text/javascript">
+  </script> 
+  <script src="main.js" type="text/javascript">
+  </script>
+</body>
 </html>

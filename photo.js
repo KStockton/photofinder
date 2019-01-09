@@ -5,18 +5,16 @@ class Photo {
     this.file = file;
     this.caption = caption;
     this.favorite = false;
-    
-
   }
-
   saveToStorage() {
     localStorage.setItem('cards', JSON.stringify(imagesArr));
   }
   deleteFromStorage() {
     localStorage.setItem('cards', JSON.stringify(imagesArr));
-
   }
-  updatePhoto() {
-
+  updatePhoto(text, type) {
+    if (type == "title" || type == "caption") {
+      this.title = text;
+    }
   }
 }

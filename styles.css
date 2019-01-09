@@ -3,158 +3,274 @@
      font-family: 'Open Sans', sans-serif;
      margin: 0px;
      padding: 0px;
-
 }
- header {
+body {
+     background-color: #c2b2b4;
+}
+header {
      background-color: #3B2B34;
 }
- .title_main {
+.title_main {
+     align-items: center;
      display: flex;
      justify-content: space-between;
-     align-items: center;
      margin: 0px 40px;
 }
- h1 {
+h1 {
      color: #ffffff;
      font-size: 43px;
      text-transform: uppercase;
 }
- .camera {
+.camera {
      height: 37px;
 }
- aside {
+aside {
      display: flex;
-     justify-content: space-between;
      font-size: 31px;
+     height: 2.5rem;
+     justify-content: space-between;
 }
- .search_icon {
-     border-top-left-radius: 8px;
-     border-bottom-left-radius: 8px;
-     border-style: solid;
+.search_icon {
+     border-bottom-left-radius: 6px;
      border-color: #ACAAB5;
-     font-size: 20px;
+     border-style: solid;
+     border-top-left-radius: 6px;
      color: #ACAAB5;
+     font-size: 20px;
      padding-left: 11px 
 }
- .fa-search {
+.fa-search {
      background-color: #ACAAB5;
+     border-bottom-right-radius: 6px;
+     border-top-right-radius: 6px;
      color: #ffffff;
+     font-size: 1.7rem;
+     font-size: 1.7rem;
      margin-left: -4px;
-     border-top-right-radius: 8px;
-     border-bottom-right-radius: 8px;
      padding: 7px 5px 5px 8px;
 }
- form {
+form {
      align-items: center;
      background-color: #3B2B34;
      display: flex;
      flex-direction: column;
 }
- label {
+label {
+     color: #908384;
      display: flex;
      flex-direction: column;
-     color: #908384;
      margin-top: 2.3rem;
 }
- .ui_text {
-  font-size: 16px;
-  font-weight: 400;
+.ui_text {
+     font-size: 16px;
+     font-weight: 400;
 }
- .input_style {
+.input_style {
      border: none;
      font-size: 18px;
      height: 2.5rem;
      margin-top: .5rem;
      padding-left: 10px;
-     width: 28rem;
+     width: 45rem;
 }
-
- .input {
-     width: 0.1px;
+.input {
      height: 0.1px;
      opacity: 0;
      overflow: hidden;
      position: absolute;
+     width: 0.1px;
      z-index: -1;
 }
- .input + label {
-     font-size: 16px;
-     font-weight: 400;
+.input + label {
      background-color: #5B4447;
      color: #ffffff;
-     height: 2.5rem;
-     width: 28rem;
-     margin-top: 2.4rem;
      display: inline-block;
+     font-size: 16px;
+     font-weight: 400;
+     height: 2.5rem;
+     margin-top: 2.4rem;
      text-align: center;
+     width: 45rem;
 }
- .input:focus + label, .input + label:hover {
+.input:focus + label, .input + label:hover {
      background-color: #938284;
 }
- #upload_text {
+#upload_text {
      position: relative;
      top: 10px;
 }
- button {
+button {
      background-color: #5B4447;
      border: none;
      color: #ffffff;
      width: 28rem;
 }
- .css_view {
+.css_view {
      height: 2.5rem;
-     width: 12rem;
      margin: 2.7rem 1.9rem;
+     width: 20.5rem;
 }
+.css_view:hover {
+      background-color: #c2b2b4;
+ }
 /*------------card-------------*/
-  main{
-    background-color: #BAA9AB;
-    height: 100%;
 
-  }
-
- .add_card {
-     display: grid;
-     grid-template-columns: repeat(auto-fit, 263px);
-     grid-gap: 40px;
-     justify-content: center;
-     margin: 20px 20px;
+.add_card {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px;
 }
- .card_content {
-     max-height: 23rem;
-     max-width: 17rem;
+.card_content {
+     background-color: #ffffff;
+     border: 1px solid #908384;
+     display: flex;
+     flex-direction: column;
+     max-width: 17.1rem;
+     margin: 59px;
 }
- h2 {
-     text-align: center;
+.card_image {
+     height: 246px;
+     object-fit: cover;
+     width: 100%;
 }
- .card_images {
+h3 { 
+     color: #3E2A35;
+     height: 51px;
+     margin-left: 7px;
+     overflow-y: scroll;
+     overflow-wrap: break-word;
+     padding-top: 13px;
+}
+.card_images {
      display: flex;
      justify-content: center;
      width: 17rem;
 }
- .card_image {
+.card_image {
      max-height: 17rem;
      max-width: 20rem;
 }
- h4 {
-     word-wrap: break-word;
+h4 { 
+     color: #3E2A35;
+     height: 90px;
+     font-weight: 300;
+     overflow-y: scroll;
+     overflow-wrap: break-word;
+     padding-left: 10px;
+     padding-top: 9px;
 }
- footer {
+footer {
      background-color: #5B4447;
      display: flex;
      height: 3rem;
      justify-content: space-between;
 }
- button {
+button {
      cursor: pointer;
 }
- .pic_icon {
+.pic_icon {
      margin: 0px 21px;
      width: 21px;
 }
- .delete_me:hover {
-     background-color: #ffffff;
+.delete_me:hover {
+     background-color: #c2b2b4;
 }
- .favorite_me:hover {
-     background-color: #ffffff;
+.favorite_me:hover {
+     background-color: #c2b2b4;
 }
+@media only screen and (max-width: 782px) {
+ .title_main {
+      flex-direction: column;
+ }
+ .camera {
+      height: 51px;
+ }
+ h1 {
+      font-size: 3.3rem;
+ }
+ aside {
+      width: 28rem;
+ }
+ .input_style {
+      width: 28rem;
+ }
+ .input + label {
+      width: 28rem;
+ }
+ .search_icon {
+      width: 100%;
+ }
+ .bottom_btns {
+      display: flex;
+      justify-content: space-between;
+      width: 28rem;
+ }
+ .css_view {
+      display: inline;
+      margin: 31px 0px;
+      width: 12rem;
+ }
+}
+@media only screen and (max-width: 530px) and (min-width: 363px) {
+  .camera{
+      height: 30px 
+ }
+ h1 {
+      font-size: 2.5rem;
+ }
+ aside {
+      width: 20rem;
+ }
+ .input_style {
+      width: 20rem;
+ }
+ .input + label {
+      width: 20rem;
+ }
+ .bottom_btns {
+      display: flex;
+      justify-content: space-between;
+      width: 20rem;
+ }
+ .css_view {
+      display: inline;
+      margin: 31px 0px;
+      width: 9rem;
+ }
+}
+@media only screen and (max-width: 320px) {
+  .camera{
+      height: 35px;
+      margin: 0px 12;
+    }
+
+  h1 {
+      font-size: 39px;
+      align-items: center;
+      display: flex;
+ }
+ aside {
+      width: 18.5rem;
+ }
+ .input_style {
+      width: 18.5rem;
+ }
+ .input + label {
+      width: 18.5rem;
+ }
+ .bottom_btns {
+      display: flex;
+      justify-content: space-between;
+      width: 94%;
+ }
+ .css_view {
+      display: inline;
+      margin: 31px 0px;
+      width: 8.5rem;
+
+ }
+ .card_content {
+      margin: 7px;
+ }
+}
+ 
