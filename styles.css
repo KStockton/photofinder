@@ -66,14 +66,14 @@ label {
   margin-top: 2.3rem;
 }
 
-.input_title {
+#input_title {
   width: 28rem;
   height: 2.5rem;
   margin-top: .5rem;
   border: none;
 }
 
-.input_caption {
+#input_caption {
   height: 2.5rem;
   width: 28rem;
   margin-top: .5rem;
@@ -107,16 +107,15 @@ label {
 }
 
 #upload_text {
-  margin-top: 3px;
+  position: relative;
+  top: 7px;
 }
 
 button {
   background-color: #5B4447;
   border: none;
   color: #ffffff;
-  height: 2.5rem;
   width: 28rem;
-  margin-top: 2.4rem;
 }
 
 .css_view {
@@ -130,13 +129,13 @@ main {
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(auto-fit, 263px); 
-  grid-gap: 20px;
+  grid-gap: 40px;
   margin: 20px 20px;
 }
 
 .card_content {
-  max-height: 20rem;
-  max-width: 20rem;
+  max-height: 23rem;
+  max-width: 17rem;
 }
 
 h2 {
@@ -165,8 +164,11 @@ footer {
   height: 3rem;
 }
 
-.pic_icon {
+button {
   cursor: pointer;
+}
+
+.pic_icon {
   margin: 0px 21px;
   width: 21px;
 }

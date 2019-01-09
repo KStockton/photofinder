@@ -12,28 +12,52 @@
 
 
 // ---------------- Variables ------------
-var addCard = document.querySelector('.add_btn');
+var addCard = document.querySelector('#add_btn');
 //save it
-var letsSearch = document.querySelector('.search_icon')
+// var letsSearch = document.querySelector('.search_icon')
 var input = document.querySelector('.input');
-var title = document.querySelector('.input_title')
-var caption = document.querySelector('.input_caption')
-var like = document.querySelector('.favorite_me')
-var trash = document.querySelector('.delete_me')
+var title = document.querySelector('#input_title')
+var caption = document.querySelector('#input_caption')
+
 var addMe = document.querySelector('.add_card')
 var photoGallery = document.querySelector('.card_image');
-var imagesArr = JSON.parse(localStorage.getItem('newPhoto')) || [];
+var imagesArr = [];
+
 console.log(imagesArr)
 var reader = new FileReader();
 
 
 // ------------ Event Listners --------------
-window.addEventListener('load', appendPhotos);
+// window.addEventListener('load', appendPhotos(imagesArr));
 addCard.addEventListener('click', createElement);
-console.log(addCard)
-  // trash.addEventListener('focusin', eraser);
+addMe.addEventListener('dblclick', editCard)
+// addMe.addEventListener('dblclick', )
+
+
+// addMe.addEventListener('click', function(event) {
+// if(event.target.classList.contains('.add_card')) {
+//   eraser(event);
+// }
+// });
 
 // -------------- Functions --------------------
+
+function editCard() {
+if (event.target.classList.contains('edit_this') || event.target.classList.contains('edit_captions')) {
+   event.target.contentEditable = true;
+  } 
+}
+
+
+function addPhoto(e) {
+  var newPhoto = new Photo(Date.now(), title.value, e.target.result, caption.value, false);
+  imagesArr.push(newPhoto);
+  appendCard(newPhoto);
+  newPhoto.saveToStorage(imagesArr);
+  title.value = '';
+  caption.value = '';
+}
+
 function createElement(e) {
    event.preventDefault();
   if (input.files[0]) {
@@ -42,64 +66,58 @@ function createElement(e) {
   }
 }
 
-function addPhoto(e) {
-  var newPhoto = new Photo(Date.now(), title.value, caption.value, e.target.result, false);
-  imagesArr.push(newPhoto);
-  newPhoto.saveToStorage(imagesArr);
-  appendCard(newPhoto);
-}
 
 
-function appendPhotos(array) {
-  imagesArr = []
-  array.forEach(function(content) {
-    newCard(content);
-    var newPhoto = new Photo(content.id, content.title, content.caption, content.file, content.favorite);
-    imagesArr.push(newPhoto);
-  })
-}
 
-// function eraser(e) {
-//   // event.preventDefault();
-//   // var removeCard = event.target.parentElement.parentElement;
-//   trash.parentNode.removeChild(trash);
-
-// }
-
-
-window.onload = function loaded(){
-   
-  if(localStorage.getItem('cards') !== null){
-    imagesArr = JSON.parse(localStorage.getItem('cards'));
-    
-    imagesArr = imagesArr.map(function(e){
-     return new Photo(e.id, e.title, e.caption, e.file, e.favorite)
-
-    });
-
-     var filtered = imagesArr.slice(-10);     
-     filtered.forEach(function(e){
-
-       appendCard(e);
-     });
-  };
-};
 
 
 
 function appendCard(newPhoto) {
 var cardPart =
-        `<article class="card_content" id="${newPhoto.id}" >
-          <h2 class="card_title">${newPhoto.title}</h2>
-          <section class="card_images">
-          <img class="card_image" src=${newPhoto.file}>
-          </section
-          <h4 class="card_caption">${newPhoto.caption}</h4>
-          <footer>
-            <button class="delete_me"><img src="images/delete.svg" class="pic_icon"><button>
-            <button class="favorite_me"><img src="images/favorite.svg" class="pic_icon"><button>
-          </footer>
-        </article>`
+`<article class="card_content" id="${newPhoto.id}" >
+  <h2 class="card_title edit_this">${newPhoto.title}</h2>
+  <section class="card_images">
+  <img class="card_image" src=${newPhoto.file}>
+  </section>
+  <h4 class="card_caption edit_captions">${newPhoto.caption}</h4>
+  <footer>
+    <button class="delete_me"><img src="images/delete.svg" class="pic_icon"></button>
+    <button class="favorite_me"><img src="images/favorite.svg" class="pic_icon"></button>
+  </footer>
+</article>`
   addMe.innerHTML = cardPart + addMe.innerHTML;
-  // addMe.insertAdjacentHTML('beforeend',cardPart)
+  };
+
+window.onload = loaded
+function loaded(){
+   
+  if(localStorage.getItem('cards') !== null){
+    imagesArr = JSON.parse(localStorage.getItem('cards'));
+    
+    imagesArr = imagesArr.map(function(e){
+     var newPhoto = new Photo(Date.now(), e.title, e.file, e.caption, e.favorite)
+     
+      appendCard(newPhoto)
+      console.log('h4')
+      return newPhoto
+    });
+
+  };
+}
+function getCardById(id) {
+for (var i = 0; i < imagesArr.length; i++) {
+  if (id == imagesArr[i].id) {
+    return imagesArr[i];
   }
+}
+};
+function eraser(event) {
+   // event.preventDefault();
+  var removeCard = event.target.parentElement.parentElement.parentElement.parentElement;
+  var id = removeCard.id;
+  var card = getCardById(id)
+  var index = imagesArr.indexOf(card)
+  imagesArr.splice(index, 1)
+  removeCard.remove();
+  card.deleteFromStorage(imagesArr)
+}
