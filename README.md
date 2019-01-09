@@ -103,3 +103,6 @@ When the user clicks on the image, the user should be able to update the photo u
 Include at least 3 different animations. Example: one for when a card gets created/deleted.
 
 The project is also suppose to look at like the folliwng as an example.
+
+<img width="731" alt="screen shot 2019-01-09 at 12 27 44 pm" src="https://user-images.githubusercontent.com/34406483/50923401-1705df00-140a-11e9-9a06-afbe140b87f3.png">
+
