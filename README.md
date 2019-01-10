@@ -105,4 +105,30 @@ Include at least 3 different animations. Example: one for when a card gets creat
 The project is also suppose to look at like the folliwng as an example.
 
 <img width="731" alt="screen shot 2019-01-09 at 12 27 44 pm" src="https://user-images.githubusercontent.com/34406483/50923401-1705df00-140a-11e9-9a06-afbe140b87f3.png">
+ 
+ ## Screen Shot of my Project
+<img width="1680" alt="screen shot 2019-01-09 at 4 22 56 am" src="https://user-images.githubusercontent.com/34406483/50947541-15fd9d80-145c-11e9-8d8b-c12270dae6ef.png">
+<img width="1680" alt="screen shot 2019-01-09 at 8 56 56 am" src="https://user-images.githubusercontent.com/34406483/50947544-17c76100-145c-11e9-96ed-aa053da0f60a.png">
+<img width="1680" alt="screen shot 2019-01-09 at 8 57 04 am" src="https://user-images.githubusercontent.com/34406483/50947548-19912480-145c-11e9-97a6-ee1c82257e39.png">
+<img width="1230" alt="screen shot 2019-01-09 at 8 57 26 am" src="https://user-images.githubusercontent.com/34406483/50947550-1ac25180-145c-11e9-836f-ef714b520825.png">
+<img width="845" alt="screen shot 2019-01-09 at 8 57 47 am" src="https://user-images.githubusercontent.com/34406483/50947552-1bf37e80-145c-11e9-9fbb-4b63dd05e680.png">
+<img width="319" alt="screen shot 2019-01-09 at 8 58 25 am" src="https://user-images.githubusercontent.com/34406483/50947557-1f870580-145c-11e9-8655-61779e0a187a.png">
+<img width="319" alt="screen shot 2019-01-09 at 8 58 37 am" src="https://user-images.githubusercontent.com/34406483/50947560-2150c900-145c-11e9-9cf2-783a11044061.png">
+![iphone 5_se](https://user-images.githubusercontent.com/34406483/50947590-3cbbd400-145c-11e9-8daf-716af4ad5870.png)
 
+## Languages 
+HTML
+CSS
+Javascript
+
+## Reflection
+I am continuing to grasp the concepts in "vanilla" Javascript and am picking up on local storage and dom maniuplation. I continue to learn everyday how to build off what I know and improve.
+
+
+
+## Shortcomings
+With juggling new concepts and projects time was limited. I would have wanted to improve my user experience by adding the favorite button to my code to make a better user experience.
+
+## Credit
+
+http://frontend.turing.io/projects/foto-finder-final.html
