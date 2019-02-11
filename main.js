@@ -1,5 +1,6 @@
 // ---------------- Variables ------------
 var addCard = document.querySelector('#add_btn');
+var favoriteBtn = document.querySelector('.view_btn')
 var favToggle = document.querySelector('.noFavorite')
 var input = document.querySelector('.input');
 var title = document.querySelector('#input_title')
@@ -122,17 +123,26 @@ function eraser(event) {
 }
 
 function createFavorite(event) {
-//  if
-//   addMe.classList.add('theFavorite')
-  // event.target.classList.remove('favorite_me')
   var saveFavorite = event.target.parentElement.parentElement.id
   var saveFavoriteCard = getCardById(saveFavorite)
   var favIndex = imagesArr.indexOf(saveFavoriteCard)
-  saveFavoriteCard.favoriteSaver(saveFavoriteCard, favIndex)
-console.log(saveFavoriteCard)
+  saveFavoriteCard.favoriteSaver(saveFavoriteCard)
+console.log(saveFavorite)
+  createFavArray(saveFavoriteCard)
+}
 
-  // console.log(saveMyFav)
-  // var saveMyFav = imagesArr.indexOf(favId)
+function createFavArray(saveFavoriteCard) {
+  imagesArr.forEach(pic => {
+    if (pic.favorite === true) {
+      favoriteArray.push(saveFavoriteCard)
+    }
+  })
+ updateDom(favoriteArray)
+}
 
-  // add.classList('.theFavorite')
+function updateDom(array, ){
+  for (var i = 0; i < favoriteArray.length; i++)
+
+  favoriteBtn.innerText = `View ${[i]} Favorites` 
+
 }
