@@ -8,6 +8,7 @@ var caption = document.querySelector('#input_caption')
 var addMe = document.querySelector('.add_card')
 var photoGallery = document.querySelector('.card_image');
 var favoriteArray = []
+// console.log(favoriteArray)
 var imagesArr = JSON.parse(localStorage.getItem('cards')) || [];
 var reader = new FileReader();
 // var favoriteIcon = document.querySelector('favorite_me')
@@ -18,8 +19,14 @@ addCard.addEventListener('click', createElement);
 addMe.addEventListener('dblclick', editCard); 
 
 addMe.addEventListener('click', function(event) {
-  if (event.target.classList.contains('noFavorite')) {
 createFavorite(event)
+  if (event.target.classList.contains('noFavorite')) {
+  event.target.classList.add('theFavorite')
+  event.target.classList.remove('noFavorite')
+  } 
+  else if(event.target.classList.contains('theFavorite')){
+    event.target.classList.add('noFavorite')
+    event.target.classList.remove('theFavorite')
   }
 })
 
@@ -125,9 +132,10 @@ function eraser(event) {
 function createFavorite(event) {
   var saveFavorite = event.target.parentElement.parentElement.id
   var saveFavoriteCard = getCardById(saveFavorite)
+  // console.log(saveFavoriteCard)
   var favIndex = imagesArr.indexOf(saveFavoriteCard)
   saveFavoriteCard.favoriteSaver(saveFavoriteCard)
-console.log(saveFavorite)
+// console.log(saveFavorite)
   createFavArray(saveFavoriteCard)
 }
 
@@ -135,14 +143,18 @@ function createFavArray(saveFavoriteCard) {
   imagesArr.forEach(pic => {
     if (pic.favorite === true) {
       favoriteArray.push(saveFavoriteCard)
-    }
+var favoriteIndex = favoriteArray.indexOf(saveFavoriteCard)
+  // favoriteArray.splice(favoriteIndex, 1)
+      console.log(favoriteArray)
+    } 
   })
- updateDom(favoriteArray)
-}
-
-function updateDom(array, ){
-  for (var i = 0; i < favoriteArray.length; i++)
+  for (var i = 1; i < favoriteArray.length; i++)
 
   favoriteBtn.innerText = `View ${[i]} Favorites` 
-
+ // updateDom(favoriteArray)
 }
+
+// function updateDom(array){
+
+
+// }

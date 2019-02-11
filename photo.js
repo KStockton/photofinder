@@ -21,5 +21,6 @@ class Photo {
   }
   favoriteSaver(card){
     this.favorite = true
+    this.saveToStorage(card)
   }
 }
