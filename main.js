@@ -1,24 +1,54 @@
 // ---------------- Variables ------------
 var addCard = document.querySelector('#add_btn');
+var favToggle = document.querySelector('.noFavorite')
 var input = document.querySelector('.input');
 var title = document.querySelector('#input_title')
 var caption = document.querySelector('#input_caption')
 var addMe = document.querySelector('.add_card')
 var photoGallery = document.querySelector('.card_image');
-var imagesArr = [];
+var favoriteArray = []
+var imagesArr = JSON.parse(localStorage.getItem('cards')) || [];
 var reader = new FileReader();
+// var favoriteIcon = document.querySelector('favorite_me')
 
 // ------------ Event Listners --------------
+window.addEventListener('load', repopulateCards(imagesArr))
 addCard.addEventListener('click', createElement);
 addMe.addEventListener('dblclick', editCard); 
 
-addMe.addEventListener('click', function (event) {
-if (event.target.classList.contains('delete_me')) {
-  eraser(event)
+addMe.addEventListener('click', function(event) {
+  if (event.target.classList.contains('noFavorite')) {
+createFavorite(event)
   }
+})
+
+addMe.addEventListener('click', function (event) {
+  if (event.target.classList.contains('delete_me')) {
+  eraser(event)
+  } 
+
 });
 
 // -------------- Functions -------------------- //
+
+function repopulateCards(array){
+  imagesArr = [];
+  array.forEach(e => {
+    let photocard = new Photo(Date.now(), e.title, e.file, e.caption, e.favorite)
+    imagesArr.push(photocard)
+      appendCard(photocard)
+
+  })
+}
+// window.onload = function loaded() {
+//   if (localStorage.getItem('cards') !== null) {
+//     imagesArr = JSON.parse(localStorage.getItem('cards'));
+//     imagesArr = imagesArr.map(function(e) {
+//       var newPhoto = new Photo(Date.now(), e.title, e.file, e.caption, e.favorite)
+//       return newPhoto
+//     });
+//   };
+// }
 function createElement(e) {
   event.preventDefault();
   if (input.files[0]) {
@@ -37,30 +67,20 @@ function addPhoto(e) {
 }
 
 function appendCard(newPhoto) {
-  var cardPart = `<article class="card_content" id="${newPhoto.id}" >
+addMe.insertAdjacentHTML('afterbegin',
+                 `<article class="card_content" id="${newPhoto.id}" >
                   <h3 class="card_title edit_this" maxlength="5">${newPhoto.title}</h3>
                   <section class="card_images">
                   <img class="card_image" src=${newPhoto.file}>
                   </section>
                   <h4 class="card_caption edit_captions">${newPhoto.caption}</h4>
                   <footer>
-                    <button class="delete_me"><img src="images/delete.svg" class="pic_icon"></button>
-                    <button class="favorite_me"><img src="images/favorite.svg" class="pic_icon"></button>
+                    <button class="delete_me pic_icon"></button>
+                    <button class="noFavorite"></button>
                   </footer>
-                </article>`
-  addMe.innerHTML = cardPart + addMe.innerHTML;
+                </article>`)
 };
 
-window.onload = function loaded() {
-  if (localStorage.getItem('cards') !== null) {
-    imagesArr = JSON.parse(localStorage.getItem('cards'));
-    imagesArr = imagesArr.map(function(e) {
-      var newPhoto = new Photo(Date.now(), e.title, e.file, e.caption, e.favorite)
-      appendCard(newPhoto)
-      return newPhoto
-    });
-  };
-}
 
 function getCardById(id) {
   for (var i = 0; i < imagesArr.length; i++) {
@@ -80,7 +100,6 @@ function editCard() {
 function saveChanges() {
   var id = event.target.parentElement.id;
   var idCard = getCardById(id);
-  var findIndex = imagesArr.indexOf(idCard);
   if (event.target.classList.contains('card_title')) {
     idCard.updatePhoto(event.target.innerText, 'title')
   } else {
@@ -91,12 +110,29 @@ function saveChanges() {
 
 function eraser(event) {
   var element = event.target.parentElement.parentElement
-  console.log(element)
+  // console.log(element)
   var id = element.id
   console.log(id)
   var deleteCard = getCardById(id)
+  console.log(deleteCard)
   var findDeleteIndex = imagesArr.indexOf(deleteCard)
   imagesArr.splice(findDeleteIndex, 1);
   element.remove();
   deleteCard.deleteFromStorage(imagesArr);
+}
+
+function createFavorite(event) {
+//  if
+//   addMe.classList.add('theFavorite')
+  // event.target.classList.remove('favorite_me')
+  var saveFavorite = event.target.parentElement.parentElement.id
+  var saveFavoriteCard = getCardById(saveFavorite)
+  var favIndex = imagesArr.indexOf(saveFavoriteCard)
+  saveFavoriteCard.favoriteSaver(saveFavoriteCard, favIndex)
+console.log(saveFavoriteCard)
+
+  // console.log(saveMyFav)
+  // var saveMyFav = imagesArr.indexOf(favId)
+
+  // add.classList('.theFavorite')
 }

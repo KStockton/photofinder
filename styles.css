@@ -169,14 +169,42 @@ button {
      cursor: pointer;
 }
 .pic_icon {
-     margin: 0px 21px;
      width: 21px;
 }
+
+.delete_me {
+  background-image: url('images/delete.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 28rem;
+  height: 48px;
+  margin-top: 0px;
+}
+
 .delete_me:hover {
      background-color: #c2b2b4;
 }
-.favorite_me:hover {
+/*.favorite_me {
+  background: black;
+}*/
+button:hover {
      background-color: #c2b2b4;
+}
+
+.noFavorite {
+  background-image: url('images/favorite.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 28rem;
+  height: 48px;
+  margin-top: 0px;
+}
+
+.theFavorite {
+    background-image: url('./images/favorite-active.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    color: #ef0c2a;
 }
 @media only screen and (max-width: 782px) {
  .title_main {
