@@ -19,10 +19,10 @@ addCard.addEventListener('click', createElement);
 addMe.addEventListener('dblclick', editCard); 
 
 addMe.addEventListener('click', function(event) {
-createFavorite(event)
   if (event.target.classList.contains('noFavorite')) {
   event.target.classList.add('theFavorite')
   event.target.classList.remove('noFavorite')
+  createFavorite(event)
   } 
   else if(event.target.classList.contains('theFavorite')){
     event.target.classList.add('noFavorite')
