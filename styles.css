@@ -188,9 +188,9 @@ button {
 
 
 .noFavorite {
-  /*background-image: url('images/favorite.svg');*/
-  /*background-repeat: no-repeat;*/
-  /*background-position: center;*/
+  background-image: url('images/favorite.svg');
+  background-repeat: no-repeat;
+  background-position: center;
   width: 28rem;
   height: 48px;
   margin-top: 0px;

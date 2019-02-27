@@ -22,7 +22,9 @@ class Photo {
     }
   }
   favoriteSaver(card){
+    if(this.favorite === false){
     this.favorite = true
+    } 
   }
   favoritedel(card) {
     this.favorite = false
