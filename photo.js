@@ -9,8 +9,10 @@ class Photo {
   saveToStorage() {
     localStorage.setItem('cards', JSON.stringify(imagesArr));
   }
-  deleteFromStorage() {
-    localStorage.setItem('cards', JSON.stringify(imagesArr));
+  deleteFromStorage(index) {
+    // localStorage.setItem('cards', JSON.stringify(imagesArr));
+    imagesArr.splice(index, 1)
+    this.saveToStorage(imagesArr)
   }
   updatePhoto(text, type) {
     if (type == "title") {
@@ -21,6 +23,9 @@ class Photo {
   }
   favoriteSaver(card){
     this.favorite = true
+  }
+  favoritedel(card) {
+    this.favorite = false
     this.saveToStorage(card)
   }
 }

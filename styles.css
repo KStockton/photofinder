@@ -181,31 +181,21 @@ button {
   margin-top: 0px;
 }
 
-.delete_me:hover {
-     background-color: #c2b2b4;
-}
-/*.favorite_me {
-  background: black;
-}*/
-button:hover {
+.delete_me:hover,
+.noFavorite:hover {
      background-color: #c2b2b4;
 }
 
+
 .noFavorite {
-  background-image: url('images/favorite.svg');
-  background-repeat: no-repeat;
-  background-position: center;
+  /*background-image: url('images/favorite.svg');*/
+  /*background-repeat: no-repeat;*/
+  /*background-position: center;*/
   width: 28rem;
   height: 48px;
   margin-top: 0px;
 }
 
-.theFavorite {
-    background-image: url('./images/favorite-active.svg');
-    background-repeat: no-repeat;
-    background-position: center;
-    color: #ef0c2a;
-}
 @media only screen and (max-width: 782px) {
  .title_main {
       flex-direction: column;

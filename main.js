@@ -1,62 +1,51 @@
-// ---------------- Variables ------------
+// ---------------- Variables ------------ //
 var addCard = document.querySelector('#add_btn');
 var favoriteBtn = document.querySelector('.view_btn')
-var favToggle = document.querySelector('.noFavorite')
 var input = document.querySelector('.input');
 var title = document.querySelector('#input_title')
 var caption = document.querySelector('#input_caption')
 var addMe = document.querySelector('.add_card')
 var photoGallery = document.querySelector('.card_image');
-var favoriteArray = []
-// console.log(favoriteArray)
 var imagesArr = JSON.parse(localStorage.getItem('cards')) || [];
+console.log(imagesArr)
 var reader = new FileReader();
-// var favoriteIcon = document.querySelector('favorite_me')
+var favCounter = 0
 
 // ------------ Event Listners --------------
-window.addEventListener('load', repopulateCards(imagesArr))
 addCard.addEventListener('click', createElement);
-addMe.addEventListener('dblclick', editCard); 
 
-addMe.addEventListener('click', function(event) {
-  if (event.target.classList.contains('noFavorite')) {
-  event.target.classList.add('theFavorite')
-  event.target.classList.remove('noFavorite')
-  createFavorite(event)
-  } 
-  else if(event.target.classList.contains('theFavorite')){
-    event.target.classList.add('noFavorite')
-    event.target.classList.remove('theFavorite')
-  }
-})
+window.addEventListener('load', grabStoredCards)
+
+addMe.addEventListener('dblclick', editCard); 
 
 addMe.addEventListener('click', function (event) {
   if (event.target.classList.contains('delete_me')) {
+    console.log(imagesArr)
   eraser(event)
   } 
-
 });
+
+addMe.addEventListener('click', function(event) {
+  if (event.target.classList.contains('noFavorite')) {
+  createFavorite(event)
+  } 
+})
+
 
 // -------------- Functions -------------------- //
 
-function repopulateCards(array){
-  imagesArr = [];
-  array.forEach(e => {
-    let photocard = new Photo(Date.now(), e.title, e.file, e.caption, e.favorite)
-    imagesArr.push(photocard)
-      appendCard(photocard)
-
+function grabStoredCards(){
+  imagesArr.forEach(e => {
+    console.log(e.id)
+    appendCard(e.id, e.title, e.file, e.caption, e.favorite)
   })
+  for (var i = 0; i < imagesArr.length; i++) {
+    imagesArr[i] = new Photo(imagesArr[i].id, imagesArr[i].file, imagesArr[i].title, imagesArr[i].caption);
+  }
+      // appendCard(photocard.id, photocard.title, photocard.file, photocard.caption, photocard.favorite)
+      console.log(imagesArr)
 }
-// window.onload = function loaded() {
-//   if (localStorage.getItem('cards') !== null) {
-//     imagesArr = JSON.parse(localStorage.getItem('cards'));
-//     imagesArr = imagesArr.map(function(e) {
-//       var newPhoto = new Photo(Date.now(), e.title, e.file, e.caption, e.favorite)
-//       return newPhoto
-//     });
-//   };
-// }
+
 function createElement(e) {
   event.preventDefault();
   if (input.files[0]) {
@@ -66,28 +55,35 @@ function createElement(e) {
 }
 
 function addPhoto(e) {
-  var newPhoto = new Photo(Date.now(), title.value, e.target.result, caption.value, false);
+  var newPhoto = new Photo(Date.now(), title.value, e.target.result, caption.value);
   imagesArr.push(newPhoto);
-  appendCard(newPhoto);
+  appendCard(newPhoto.id, newPhoto.title, newPhoto.file, newPhoto.caption, newPhoto.favorite);
   newPhoto.saveToStorage(imagesArr);
   title.value = '';
   caption.value = '';
+  // console.log(newPhoto)
 }
 
-function appendCard(newPhoto) {
+function appendCard(id, title, result, caption, favorite) {
+  if(favorite === false) {
+    var loveFavorite = `images/favorite.svg`
+  } else if(favorite === true) {
+    var loveFavorite = `images/favorite-active.svg`
+  } 
 addMe.insertAdjacentHTML('afterbegin',
-                 `<article class="card_content" id="${newPhoto.id}" >
-                  <h3 class="card_title edit_this" maxlength="5">${newPhoto.title}</h3>
+                 `<article class="card_content" id="${id}" >
+                  <h3 class="card_title edit_this" maxlength="5">${title}</h3>
                   <section class="card_images">
-                  <img class="card_image" src=${newPhoto.file}>
+                  <img class="card_image" src=${result}>
                   </section>
-                  <h4 class="card_caption edit_captions">${newPhoto.caption}</h4>
+                  <h4 class="card_caption edit_captions">${caption}</h4>
                   <footer>
-                    <button class="delete_me pic_icon"></button>
-                    <button class="noFavorite"></button>
+                    <img class="delete_me pic_icon">
+                    <img  class="noFavorite" src=${loveFavorite}>
                   </footer>
                 </article>`)
 };
+
 
 
 function getCardById(id) {
@@ -118,43 +114,69 @@ function saveChanges() {
 
 function eraser(event) {
   var element = event.target.parentElement.parentElement
-  // console.log(element)
+  console.log(element)
   var id = element.id
-  console.log(id)
+  // console.log(id)
+
   var deleteCard = getCardById(id)
-  console.log(deleteCard)
+  // console.log(deleteCard)
+  // console.log(imagesArr)
+  
   var findDeleteIndex = imagesArr.indexOf(deleteCard)
-  imagesArr.splice(findDeleteIndex, 1);
+  
+  // imagesArr.splice(findDeleteIndex, 1);
+  deleteCard.deleteFromStorage(findDeleteIndex);
   element.remove();
-  deleteCard.deleteFromStorage(imagesArr);
 }
 
 function createFavorite(event) {
   var saveFavorite = event.target.parentElement.parentElement.id
   var saveFavoriteCard = getCardById(saveFavorite)
-  // console.log(saveFavoriteCard)
   var favIndex = imagesArr.indexOf(saveFavoriteCard)
-  saveFavoriteCard.favoriteSaver(saveFavoriteCard)
-// console.log(saveFavorite)
-  createFavArray(saveFavoriteCard)
+
+
+  saveFavoriteCard.favoriteSaver(saveFavorite)
+
+  favCounter++
+  favoriteBtn.innerText = `View ${favCounter} Favorites`
+  
+  
+  saveFavoriteCard.saveToStorage(imagesArr)
+  
+  
+
+  console.log(saveFavoriteCard)
+  // saveFavoriteCard.favoriteSaver(saveFavoriteCard)
 }
 
-function createFavArray(saveFavoriteCard) {
-  imagesArr.forEach(pic => {
-    if (pic.favorite === true) {
-      favoriteArray.push(saveFavoriteCard)
-var favoriteIndex = favoriteArray.indexOf(saveFavoriteCard)
-  // favoriteArray.splice(favoriteIndex, 1)
-      console.log(favoriteArray)
-    } 
-  })
-  for (var i = 1; i < favoriteArray.length; i++)
+// function createFavArray(saveFavoriteCard) {
+//   imagesArr.forEach(pic => {
+//     if (pic.favorite === true) {
+//       favoriteArray.push(saveFavoriteCard)
+//     } 
+//   })
+//   for (var i = 1; i < favoriteArray.length; i++)
 
-  favoriteBtn.innerText = `View ${[i]} Favorites` 
- // updateDom(favoriteArray)
-}
+//   favoriteBtn.innerText = `View ${[i]} Favorites` 
+//  // updateDom(favoriteArray)
+// }
 
-// function updateDom(array){
+// function removeFavoriteInArray(event) {
+//   var deleteFavorite = event.target.parentElement.parentElement.id
+//   if(pic.favorite !== true ) {}
+// var favoriteIndex = favoriteArray.indexOf(deleteFavorite)
+//   favoriteArray.splice(favoriteIndex, 1)
+//   console.log(favoriteArray)
+//       console.log(favoriteIndex)
+//   console.log(deleteFavorite)
+// }
 
-
+// window.onload = function loaded() {
+//   if (localStorage.getItem('cards') !== null) {
+//     imagesArr = JSON.parse(localStorage.getItem('cards'));
+//     imagesArr = imagesArr.map(function(e) {
+//       var newPhoto = new Photo(Date.now(), e.title, e.file, e.caption, e.favorite)
+//       return newPhoto
+//     });
+//   };
 // }
