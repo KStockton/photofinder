@@ -14,72 +14,85 @@ var reader = new FileReader();
 addCard.addEventListener('click', createElement);
 window.addEventListener('load', grabStoredCards)
 addMe.addEventListener('dblclick', editCard); 
-favoriteBtn.addEventListener('click', grabFavorites)
+favoriteBtn.addEventListener('click', grabFavorites);
+
 addMe.addEventListener('click', function (event) {
+
   if (event.target.classList.contains('delete_me')) {
-  eraser(event)
+    eraser(event);
   } 
+
 });
+
 addMe.addEventListener('click', function(event) {
   if (event.target.classList.contains('noFavorite')) {
-  createFavorite(event)
+     createFavorite(event);
   } 
 })
 
 // -------------- Functions -------------------- //
+ 
+function grabStoredCards() {
 
-function grabStoredCards(){
   imagesArr.forEach(e => {
     appendCard(e.id, e.title, e.file, e.caption, e.favorite)
-  })
+  });
+
   for (var i = 0; i < imagesArr.length; i++) {
-    console.log(imagesArr[i])
     imagesArr[i] = new Photo(imagesArr[i].id, imagesArr[i].file, imagesArr[i].title, imagesArr[i].caption);
   }
+
 }
 
 //Grabs all the favorites in an array// Haven't removed non favorites yet.
 function grabFavorites(event){
-  event.preventDefault()
+  event.preventDefault();
+
   let favoritesArray = imagesArr.reduce((acc, curVal) =>{
     if(curVal.favorite === true){
       acc.push(curVal)
     }
     return acc;
-  },[])
+  },[]);
+
   let result = document.querySelector('main')
-  result.innerHTML = ''
+  result.innerHTML = '';
 
   favoritesArray.forEach(loveItem =>{
-    appendCard(loveItem.id, loveItem.title, loveItem.file, loveItem.caption, loveItem.favorite)
-  })
+    appendCard(loveItem.id, loveItem.title, loveItem.file, loveItem.caption, loveItem.favorite);
+  });
 }
 
 
-function createElement(e) {
+function createElement(event) {
   event.preventDefault();
+
   if (input.files[0]) {
     reader.readAsDataURL(input.files[0]);
-    reader.onload = addPhoto
+    reader.onload = addPhoto;
   }
 }
 
 function addPhoto(e) {
   var newPhoto = new Photo(Date.now(), title.value, e.target.result, caption.value);
   imagesArr.push(newPhoto);
+
   appendCard(newPhoto.id, newPhoto.title, newPhoto.file, newPhoto.caption, newPhoto.favorite);
   newPhoto.saveToStorage(imagesArr);
+
   title.value = '';
   caption.value = '';
 }
 
 function appendCard(id, title, result, caption, favorite) {
-  const deleteMe = `images/delete.svg`
+  const deleteMe = `images/delete.svg`;
+
   if(favorite === false) {
     var loveFavorite = `images/favorite.svg`
   } else if(favorite === true) {
     var loveFavorite = `images/favorite-active.svg`
-  } 
+  }
+
 addMe.insertAdjacentHTML('afterbegin',
  `<article class="card_content" id="${id}" >
   <h3 class="card_title edit_this" maxlength="5">${title}</h3>
@@ -89,7 +102,6 @@ addMe.insertAdjacentHTML('afterbegin',
   <h4 class="card_caption edit_captions">${caption}</h4>
   <footer>
     <img class="delete_me pic_icon" src=${deleteMe}>
-    </div>
     <img class="noFavorite" src=${loveFavorite}>
   </footer>
 </article>`)
@@ -122,13 +134,13 @@ function saveChanges() {
 }
 
 function eraser(event) {
-  event.preventDefault()
+  event.preventDefault();
   var element = event.target.parentElement.parentElement
   var id = element.id
   var deleteCard = getCardById(id)  
   var findDeleteIndex = imagesArr.indexOf(deleteCard)
   deleteCard.deleteFromStorage(findDeleteIndex);
-  console.log(element)
+
   element.remove();
 }
 
@@ -140,7 +152,6 @@ function createFavorite(event) {
       saveFavoriteCard.favoriteSaver()
   } else if(saveFavoriteCard.favorite === true){
     saveFavoriteCard.favoritedel()
-  
   }
 
   // let trys = imagesArr.reduce((acc, curVal) =>{

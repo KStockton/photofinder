@@ -22,7 +22,7 @@ class Photo {
     }
   }
   favoriteSaver(){
-    console.log(this)
+    console.log(this.favorite)
     if(this.favorite === false){
     this.favorite = true
     } 
