@@ -6,11 +6,11 @@ class Photo {
     this.caption = caption;
     this.favorite = favorite || false;
   }
-  saveToStorage() {
-    localStorage.setItem('cards', JSON.stringify(imagesArr));
+  saveToStorage(photos) {
+    localStorage.setItem('cards', JSON.stringify(photos));
   }
   deleteFromStorage(index) {
-    // localStorage.setItem('cards', JSON.stringify(imagesArr));
+    localStorage.setItem('cards', JSON.stringify(imagesArr));
     imagesArr.splice(index, 1)
     this.saveToStorage(imagesArr)
   }
@@ -21,13 +21,16 @@ class Photo {
       this.caption = text
     }
   }
-  favoriteSaver(card){
+  favoriteSaver(){
+    console.log(this)
     if(this.favorite === false){
     this.favorite = true
     } 
+    this.saveToStorage(this)
   }
-  favoritedel(card) {
+  favoritedel() {
+    console.log(this)
     this.favorite = false
-    this.saveToStorage(card)
+    this.saveToStorage(this)
   }
 }

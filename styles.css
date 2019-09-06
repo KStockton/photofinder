@@ -4,32 +4,39 @@
      margin: 0px;
      padding: 0px;
 }
+
 body {
      background-color: #c2b2b4;
 }
+
 header {
      background-color: #3B2B34;
 }
+
 .title_main {
      align-items: center;
      display: flex;
      justify-content: space-between;
      margin: 0px 40px;
 }
+
 h1 {
      color: #ffffff;
      font-size: 43px;
      text-transform: uppercase;
 }
+
 .camera {
      height: 37px;
 }
+
 aside {
      display: flex;
      font-size: 31px;
      height: 2.5rem;
      justify-content: space-between;
 }
+
 .search_icon {
      border-bottom-left-radius: 6px;
      border-color: #ACAAB5;
@@ -39,6 +46,7 @@ aside {
      font-size: 20px;
      padding-left: 11px 
 }
+
 .fa-search {
      background-color: #ACAAB5;
      border-bottom-right-radius: 6px;
@@ -49,22 +57,26 @@ aside {
      margin-left: -4px;
      padding: 7px 5px 5px 8px;
 }
+
 form {
      align-items: center;
      background-color: #3B2B34;
      display: flex;
      flex-direction: column;
 }
+
 label {
      color: #908384;
      display: flex;
      flex-direction: column;
      margin-top: 2.3rem;
 }
+
 .ui_text {
      font-size: 16px;
      font-weight: 400;
 }
+
 .input_style {
      border: none;
      font-size: 18px;
@@ -73,6 +85,7 @@ label {
      padding-left: 10px;
      width: 45rem;
 }
+
 .input {
      height: 0.1px;
      opacity: 0;
@@ -81,6 +94,7 @@ label {
      width: 0.1px;
      z-index: -1;
 }
+
 .input + label {
      background-color: #5B4447;
      color: #ffffff;
@@ -92,27 +106,33 @@ label {
      text-align: center;
      width: 45rem;
 }
+
 .input:focus + label, .input + label:hover {
      background-color: #938284;
 }
+
 #upload_text {
      position: relative;
      top: 10px;
 }
+
 button {
      background-color: #5B4447;
      border: none;
      color: #ffffff;
      width: 28rem;
 }
+
 .css_view {
      height: 2.5rem;
      margin: 2.7rem 1.9rem;
      width: 20.5rem;
 }
+
 .css_view:hover {
       background-color: #c2b2b4;
  }
+
 /*------------card-------------*/
 
 .add_card {
@@ -120,6 +140,7 @@ button {
     flex-wrap: wrap;
     margin: 20px;
 }
+
 .card_content {
      background-color: #ffffff;
      border: 1px solid #908384;
@@ -128,11 +149,13 @@ button {
      max-width: 17.1rem;
      margin: 59px;
 }
+
 .card_image {
      height: 246px;
      object-fit: cover;
-     width: 100%;
+     width: 301px;
 }
+
 h3 { 
      color: #3E2A35;
      height: 51px;
@@ -141,15 +164,13 @@ h3 {
      overflow-wrap: break-word;
      padding-top: 13px;
 }
+
 .card_images {
      display: flex;
      justify-content: center;
-     width: 17rem;
+     align-items: center;
 }
-.card_image {
-     max-height: 17rem;
-     max-width: 20rem;
-}
+
 h4 { 
      color: #3E2A35;
      height: 90px;
@@ -159,42 +180,43 @@ h4 {
      padding-left: 10px;
      padding-top: 9px;
 }
+
 footer {
      background-color: #5B4447;
      display: flex;
      height: 3rem;
      justify-content: space-between;
 }
+
 button {
      cursor: pointer;
 }
-.pic_icon {
-     width: 21px;
-}
+
 
 .delete_me {
-  background-image: url('images/delete.svg');
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 28rem;
-  height: 48px;
-  margin-top: 0px;
+  /* background-image: url('images/delete.svg'); */
+  /* background-repeat: no-repeat;
+  background-position: center; */
+  border-right: 1px solid white;
+  width: 101%;
+  height: 100%;
+}
+
+.noFavorite {
+  /* background-image: url('images/favorite.svg'); */
+  /* background-repeat: no-repeat;
+  background-position: center; */
+  width: 100%;
+  height: 100%;
 }
 
 .delete_me:hover,
 .noFavorite:hover {
-     background-color: #c2b2b4;
+     background-color: #3b2b34;
+     cursor: pointer;
 }
 
 
-.noFavorite {
-  background-image: url('images/favorite.svg');
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 28rem;
-  height: 48px;
-  margin-top: 0px;
-}
 
 @media only screen and (max-width: 782px) {
  .title_main {
@@ -226,36 +248,43 @@ button {
  .css_view {
       display: inline;
       margin: 31px 0px;
-      width: 12rem;
+
  }
 }
 @media only screen and (max-width: 530px) and (min-width: 363px) {
   .camera{
       height: 30px 
  }
+ 
  h1 {
       font-size: 2.5rem;
  }
+
  aside {
       width: 20rem;
  }
+
  .input_style {
       width: 20rem;
  }
+
  .input + label {
       width: 20rem;
  }
+
  .bottom_btns {
       display: flex;
       justify-content: space-between;
       width: 20rem;
  }
+
  .css_view {
       display: inline;
       margin: 31px 0px;
       width: 9rem;
  }
 }
+
 @media only screen and (max-width: 320px) {
   .camera{
       height: 35px;
